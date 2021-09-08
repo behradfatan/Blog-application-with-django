@@ -3,7 +3,7 @@ from .models import Article
 
 
 def all_articles(request):
-    all_articles = Article.objects.all()
+    all_articles = Article.objects.all().filter(status="publish")
     return render(request, "all_articles.html", {"all_articles": all_articles})
 
 def article_detail(request, id, slug):
