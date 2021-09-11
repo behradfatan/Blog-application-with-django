@@ -3,7 +3,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
-from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Article(models.Model):
@@ -14,7 +14,7 @@ class Article(models.Model):
     title = models.CharField(max_length=120)
     slug = models.SlugField(max_length=120, unique=True)
     writer = models.ForeignKey(User, on_delete=models.CASCADE, default='')
-    body = RichTextField()
+    body = RichTextUploadingField()
     # default = datetime.datetime.now
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(default=timezone.now)
