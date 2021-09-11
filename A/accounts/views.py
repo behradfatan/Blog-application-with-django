@@ -30,7 +30,7 @@ def user_register(request):
         forms = UserRegister(request.POST)
         if forms.is_valid():
             cd = forms.cleaned_data
-            User.objects.create_user(cd['username'], cd['email'], cd['password'])
+            User.objects.create_user(cd['username'], cd['email'], cd['password1'])
             messages.success(request, 'successfully, go to login page', 'success')
             return redirect('user_login')
     else:
